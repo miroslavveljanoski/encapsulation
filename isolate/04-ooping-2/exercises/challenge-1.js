@@ -4,9 +4,25 @@ const obj = {
   state: {
     biggest: -Infinity,
     smallest: Infinity,
-    all: []
+    all: [],
   },
-  addNumber: function (newValue) { }
+  addNumber: function (newValue) {
+    if (typeof newValue === 'number') {
+      this.state.all.push(newValue);
+    }
+    if (newValue > this.state.biggest) {
+      this.state.biggest = newValue;
+    }
+    if (newValue < this.state.smallest) {
+      this.state.smallest = newValue;
+    }
+
+    if (typeof newValue === 'number') {
+      return true;
+    } else {
+      return false;
+    }
+  },
 };
 
 const returned1 = obj.addNumber(0);
@@ -46,4 +62,3 @@ console.assert(returned8 === false, 'Test 8');
 console.assert(obj.state.all.length === 4, 'Test 9 a');
 console.assert(obj.state.biggest === 1, 'Test 9 b');
 console.assert(obj.state.smallest === -1, 'Test 9 c');
-
