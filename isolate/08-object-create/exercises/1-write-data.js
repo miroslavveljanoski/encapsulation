@@ -11,13 +11,10 @@ const incrementorPrototype = {
   },
   increment: function () {
     this.state.value += this.state.stepSize;
-  }
+  },
 };
 
-
 console.log('incrementorPrototype:', incrementorPrototype);
-
-
 
 console.log('--- incrementor A ---');
 
@@ -25,7 +22,7 @@ const incrementorA = Object.create(incrementorPrototype);
 incrementorA.id = 'A';
 incrementorA.state = {
   value: 0,
-  _: _
+  stepSize: 1,
 };
 
 incrementorA.increment(); // value --> 1
@@ -39,15 +36,13 @@ const testValueA = incrementorA.value === 4;
 
 console.log('incrementorA:', incrementorA);
 
-
-
 console.log('--- incrementor B ---');
 
 const incrementorB = Object.create(incrementorPrototype);
 incrementorB.id = 'B';
 incrementorB.state = {
-  _: _,
-  stepSize: -4
+  value: 2,
+  stepSize: -4,
 };
 
 incrementorB.increment(); // value --> -2
